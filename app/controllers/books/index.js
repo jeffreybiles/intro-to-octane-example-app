@@ -5,7 +5,10 @@ import { tracked } from '@glimmer/tracking';
 export default class BooksController extends Controller {
   @tracked sortProperty = 'publicationYear'
   @tracked reversed = false
+  @tracked selectedBookIds = [1, 4]
+  @tracked hiddenBookIds = [1, 3]
 
+  get books() { return this.model }
   get sortedBooks(){
     let sortedBooks = this.books.sortBy(this.sortProperty)
     if(this.reversed) {
@@ -15,15 +18,9 @@ export default class BooksController extends Controller {
     }
   }
 
-  @tracked selectedBookIds = [1, 4]
-  @tracked hiddenBookIds = [1, 3]
-
   get selectedBooks(){ return this.booksFromIds(this.selectedBookIds) }
-
   get shownBooks(){ return this.sortedBooks.filter(book => !this.hiddenBookIds.includes(book.id)) }
-
   get hiddenBooks(){ return this.booksFromIds(this.hiddenBookIds) }
-
   booksFromIds(idSet){
     return this.sortedBooks.filter(book => idSet.includes(book.id));
   }
@@ -46,6 +43,4 @@ export default class BooksController extends Controller {
   @action showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); this.notifyPropertyChange('hiddenBookIds')}
   @action selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
   @action unselectAll(){ this.set('selectedBookIds', []); }
-
-  get books() { return this.model }
 }
