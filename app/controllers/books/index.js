@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 
 export default class BooksController extends Controller {
   sortProperty = 'publicationYear'
@@ -31,23 +31,23 @@ export default class BooksController extends Controller {
     return this.sortedBooks.filter(book => idSet.includes(book.id));
   }
 
-  toggleSelection(book, isSelected){
+  @action toggleSelection(book, isSelected){
     if(isSelected) {
       this.selectedBookIds.removeObject(book.id)
     } else {
       this.selectedBookIds.pushObject(book.id)
     }
   }
-  sortBooks(property, reversed){
+  @action sortBooks(property, reversed){
     this.set('reversed', reversed);
     this.set('sortProperty', property);
   }
-  hideBook(book){ this.hiddenBookIds.pushObject(book.id) }
-  hideAllSelected(){ this.hiddenBookIds.pushObjects(this.selectedBookIds); }
-  showBook(book){ this.hiddenBookIds.removeObject(book.id) }
-  showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); }
-  selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
-  unselectAll(){ this.set('selectedBookIds', []); }
+  @action hideBook(book){ this.hiddenBookIds.pushObject(book.id) }
+  @action hideAllSelected(){ this.hiddenBookIds.pushObjects(this.selectedBookIds); }
+  @action showBook(book){ this.hiddenBookIds.removeObject(book.id) }
+  @action showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); }
+  @action selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
+  @action unselectAll(){ this.set('selectedBookIds', []); }
 
   @computed('model.[]') get books() { return this.model }
 }
