@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('about');
   this.route('books', function() {
-    this.route('book');
+    this.route('book', {path: ':book_id'});
   });
 });
 
