@@ -1,11 +1,12 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class BooksController extends Controller {
-  sortProperty = 'publicationYear'
-  reversed = false
+  @tracked sortProperty = 'publicationYear'
+  @tracked reversed = false
 
-  @computed('books.[]', 'sortProperty', 'reversed')
+
   get sortedBooks(){
     let sortedBooks = this.books.sortBy(this.sortProperty)
     if(this.reversed) {
@@ -15,16 +16,13 @@ export default class BooksController extends Controller {
     }
   }
 
-  selectedBookIds = [1, 4]
-  hiddenBookIds = [1, 3]
+  @tracked selectedBookIds = [1, 4]
+  @tracked hiddenBookIds = [1, 3]
 
-  @computed('selectedBookIds.[]', 'sortedBooks.[]')
   get selectedBooks(){ return this.booksFromIds(this.selectedBookIds) }
 
-  @computed('hiddenBookIds.[]', 'sortedBooks.[]')
   get shownBooks(){ return this.sortedBooks.filter(book => !this.hiddenBookIds.includes(book.id)) }
 
-  @computed('hiddenBookIds.[]', 'sortedBooks.[]')
   get hiddenBooks(){ return this.booksFromIds(this.hiddenBookIds) }
 
   booksFromIds(idSet){
@@ -49,5 +47,5 @@ export default class BooksController extends Controller {
   @action selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
   @action unselectAll(){ this.set('selectedBookIds', []); }
 
-  @computed('model.[]') get books() { return this.model }
+  get books() { return this.model }
 }
