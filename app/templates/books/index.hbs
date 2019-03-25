@@ -9,10 +9,10 @@
 
 <div class="table table--5cols">
   <div class="table-row">
-    <SortableHeader @columnName="Name" @sortBooks={{action this.sortBooks}} @sortProperty='name' />
-    <SortableHeader @columnName="Author" @sortBooks={{action this.sortBooks}} @sortProperty='author' />
-    <SortableHeader @columnName="Publication Year" @sortBooks={{action this.sortBooks}} @sortProperty='publicationYear' />
-    <SortableHeader @columnName="Pages" @sortBooks={{action this.sortBooks}} @sortProperty='pages' />
+    <SortableHeader @columnName="Name" @sortBooks={{action this.sortBooks}} @sortBy='name' @sortedBy={{this.sortProperty}}/>
+    <SortableHeader @columnName="Author" @sortBooks={{action this.sortBooks}} @sortBy='author' @sortedBy={{this.sortProperty}} />
+    <SortableHeader @columnName="Publication Year" @sortBooks={{action this.sortBooks}} @sortBy='publicationYear' @sortedBy={{this.sortProperty}} />
+    <SortableHeader @columnName="Pages" @sortBooks={{action this.sortBooks}} @sortBy='pages' @sortedBy={{this.sortProperty}} />
     <SortableHeader @columnName="Actions" />
   </div>
 

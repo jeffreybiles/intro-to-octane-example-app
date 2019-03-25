@@ -62,7 +62,14 @@ h1 {
   font-weight: bold;
   background-color: #DFDFDF;
   cursor: default;
-  color: #191919;
+}
+
+.table-cell.header.selected {
+  font-weight: bold;
+  background-color: #DFDFDF;
+  cursor: default;
+  color: #000;
+  background-color: #D0D0DF;
 }
 
 .clickable {
