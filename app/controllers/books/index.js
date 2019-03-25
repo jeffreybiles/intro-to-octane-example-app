@@ -1,6 +1,9 @@
 import Controller from '@ember/controller';
 import { computed, action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import move from 'ember-animated/motions/move';
+import scale from 'ember-animated/motions/scale';
+import { parallel } from 'ember-animated';
 
 export default class BooksController extends Controller {
   @tracked sortProperty = 'publicationYear'
@@ -43,4 +46,20 @@ export default class BooksController extends Controller {
   @action showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); this.notifyPropertyChange('hiddenBookIds')}
   @action selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
   @action unselectAll(){ this.set('selectedBookIds', []); }
+
+  transition = function * (context) {
+    let { keptSprites, sentSprites, receivedSprites } = context;
+
+    keptSprites.forEach(sprite => {
+      move(sprite);
+    });
+
+    sentSprites.forEach(sprite => {
+      move(sprite);
+    });
+
+    receivedSprites.forEach(sprite => {
+      sprite.moveToFinalPosition();
+    });
+  }
 }
