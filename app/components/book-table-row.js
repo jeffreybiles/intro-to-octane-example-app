@@ -6,6 +6,6 @@ export default class BookTableRowComponent extends Component {
   }
 
   get isStriped() {
-    return this.args.index % 2 === 0
+    return this.args.index % 2 === 1
   }
 }
