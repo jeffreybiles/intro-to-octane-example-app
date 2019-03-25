@@ -1,0 +1,6 @@
+<div class="table-cell
+            {{if isStriped 'zebra'}}
+            {{if isSelected 'selected'}}"
+            {{action @toggleSelection @book this.isSelected}}>
+  {{yield}}
+</div>

@@ -1,4 +1,4 @@
-<div class="table-cell {{if isStriped 'zebra'}} {{if isSelected 'selected'}}" {{action @toggleSelection @book this.isSelected}}>{{@book.name}}</div>
+<BookTableCell @index={{@index}} @selectedBookIds={{@selectedBookIds}} @toggleSelection={{@toggleSelection}} @book={{@book}} >{{@book.name}}</BookTableCell>
 <div class="table-cell {{if isStriped 'zebra'}} {{if isSelected 'selected'}}" {{action @toggleSelection @book this.isSelected}}>{{@book.author}}</div>
 <div class="table-cell {{if isStriped 'zebra'}} {{if isSelected 'selected'}}" {{action @toggleSelection @book this.isSelected}}>{{@book.publicationYear}}</div>
 <div class="table-cell {{if isStriped 'zebra'}} {{if isSelected 'selected'}}" {{action @toggleSelection @book this.isSelected}}>{{@book.pages}}</div>
