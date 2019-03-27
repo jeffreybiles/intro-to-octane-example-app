@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class BooksController extends Controller {
   @tracked sortProperty = 'publicationYear'
   @tracked reversed = false
-  @tracked selectedBookIds = [1, 4]
+  @tracked selectedBookIds = []
   @tracked hiddenBookIds = [1, 3]
 
   get books() { return this.model }
