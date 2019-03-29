@@ -13,7 +13,8 @@
       <SortableHeader @columnName={{header.name}}
                       @sortBooks={{action this.sortBooks}}
                       @sortBy={{header.property}}
-                      @sortedBy={{this.sortProperty}}/>
+                      @sortedBy={{this.sortProperty}}
+                      @isReversed={{this.reversed}} />
     {{/each}}
   </div>
 

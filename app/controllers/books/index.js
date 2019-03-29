@@ -33,8 +33,12 @@ export default class BooksController extends Controller {
     }
     this.notifyPropertyChange('selectedBookIds')
   }
-  @action sortBooks(property, reversed){
-    this.reversed = reversed;
+  @action sortBooks(property){
+    if(property == this.sortProperty) {
+      this.reversed = !this.reversed;
+    } else {
+      this.reversed = false;
+    }
     this.sortProperty = property;
   }
   @action hideBook(book){ this.hiddenBookIds.pushObject(book.id); this.notifyPropertyChange('hiddenBookIds') }

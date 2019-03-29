@@ -1,7 +1,10 @@
-<div class="table-cell header {{if isSort 'selected'}}">
-  {{#if @sortBy}}
-    <span {{action @sortBooks @sortBy true}} class="clickable">&uarr;</span>
-    <span {{action @sortBooks @sortBy false}} class="clickable">&darr;</span>
-  {{/if}}
+<div class="table-cell header {{if isSort 'selected'}}" {{action @sortBooks @sortBy}}>
   {{@columnName}}
+  {{#if isSort}}
+    {{#if @isReversed}}
+      &uarr;
+    {{else}}
+      &darr;
+    {{/if}}
+  {{/if}}
 </div>
