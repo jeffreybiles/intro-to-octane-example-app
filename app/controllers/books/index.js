@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { computed, action } from '@ember/object';
+import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class BooksController extends Controller {
@@ -34,13 +34,13 @@ export default class BooksController extends Controller {
     this.notifyPropertyChange('selectedBookIds')
   }
   @action sortBooks(property, reversed){
-    this.set('reversed', reversed);
-    this.set('sortProperty', property);
+    this.reversed = reversed;
+    this.sortProperty = property;
   }
   @action hideBook(book){ this.hiddenBookIds.pushObject(book.id); this.notifyPropertyChange('hiddenBookIds') }
   @action hideAllSelected(){ this.hiddenBookIds.pushObjects(this.selectedBookIds); this.notifyPropertyChange('hiddenBookIds') }
   @action showBook(book){ this.hiddenBookIds.removeObject(book.id); this.notifyPropertyChange('hiddenBookIds') }
   @action showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); this.notifyPropertyChange('hiddenBookIds')}
-  @action selectAll(){ this.set('selectedBookIds', this.sortedBooks.mapBy('id')); }
-  @action unselectAll(){ this.set('selectedBookIds', []); }
+  @action selectAll(){ this.selectedBookIds = this.sortedBooks.mapBy('id'); }
+  @action unselectAll(){ this.selectedBookIds = []; }
 }
