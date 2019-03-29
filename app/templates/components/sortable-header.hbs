@@ -1,5 +1,5 @@
 <div class="table-cell header {{if isSort 'selected'}}">
-  {{#if @sortBooks}}
+  {{#if @sortBy}}
     <span {{action @sortBooks @sortBy true}} class="clickable">&uarr;</span>
     <span {{action @sortBooks @sortBy false}} class="clickable">&darr;</span>
   {{/if}}

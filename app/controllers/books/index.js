@@ -43,4 +43,12 @@ export default class BooksController extends Controller {
   @action showAllSelected(){ this.hiddenBookIds.removeObjects(this.selectedBookIds); this.notifyPropertyChange('hiddenBookIds')}
   @action selectAll(){ this.selectedBookIds = this.sortedBooks.mapBy('id'); }
   @action unselectAll(){ this.selectedBookIds = []; }
+
+  headerInfo = [
+    {name: 'Name', property: 'name'},
+    {name: 'Author', property: 'author'},
+    {name: 'Publication Year', property: 'publicationYear'},
+    {name: 'Pages', property: 'pages'},
+    {name: 'Actions', property: null}
+  ]
 }
