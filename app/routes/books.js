@@ -72,6 +72,13 @@ export default class BooksRoute extends Route {
       publicationYear: 1962,
       pages: 228,
       imgUrl: '/imgs/wrinkle-in-time.jpg'
+    }, {
+      id: 11,
+      name: 'The Giver',
+      author: 'Lois Lowry',
+      publicationYear: 1993,
+      pages: 256,
+      imgUrl: '/imgs/the-giver.jpg'
     }]
   }
 }

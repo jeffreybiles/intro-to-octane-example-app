@@ -18,7 +18,7 @@ h1 {
 }
 
 button {
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid #BBE;
@@ -93,12 +93,12 @@ img {
   vertical-align: middle;
   flex-grow: 1;
   width: 100%; /* Default to full width */
-  padding: 0.7em 1.2em;
+  padding: 0.5em 1.2em;
   overflow: hidden; /* Or flex might break */
   list-style: none;
   border: solid 1px #AAA;
   background: white;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .table-cell.header {
